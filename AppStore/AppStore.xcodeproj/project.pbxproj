@@ -17,6 +17,13 @@
 		938CC4D0275977F70000C0E0 /* AppStoreUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938CC4CF275977F70000C0E0 /* AppStoreUITests.swift */; };
 		938CC4D2275977F70000C0E0 /* AppStoreUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938CC4D1275977F70000C0E0 /* AppStoreUITestsLaunchTests.swift */; };
 		938CC4E02759784B0000C0E0 /* BaseTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938CC4DF2759784B0000C0E0 /* BaseTabBarViewController.swift */; };
+		938CC4E32759A1BD0000C0E0 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938CC4E22759A1BD0000C0E0 /* SearchViewController.swift */; };
+		938CC4E72759A4300000C0E0 /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938CC4E62759A4300000C0E0 /* SearchCell.swift */; };
+		938CC4EA2759A4FD0000C0E0 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938CC4E92759A4FD0000C0E0 /* UIView.swift */; };
+		938CC4EC2759A5E00000C0E0 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938CC4EB2759A5E00000C0E0 /* UIImageView.swift */; };
+		938CC4EE2759A9A00000C0E0 /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938CC4ED2759A9A00000C0E0 /* UILabel.swift */; };
+		938CC4F02759AF680000C0E0 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938CC4EF2759AF680000C0E0 /* UIButton.swift */; };
+		938CC4F22759B51B0000C0E0 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938CC4F12759B51B0000C0E0 /* UIColor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +58,13 @@
 		938CC4CF275977F70000C0E0 /* AppStoreUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreUITests.swift; sourceTree = "<group>"; };
 		938CC4D1275977F70000C0E0 /* AppStoreUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		938CC4DF2759784B0000C0E0 /* BaseTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarViewController.swift; sourceTree = "<group>"; };
+		938CC4E22759A1BD0000C0E0 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		938CC4E62759A4300000C0E0 /* SearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
+		938CC4E92759A4FD0000C0E0 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		938CC4EB2759A5E00000C0E0 /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
+		938CC4ED2759A9A00000C0E0 /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
+		938CC4EF2759AF680000C0E0 /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
+		938CC4F12759B51B0000C0E0 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +115,8 @@
 		938CC4AD275977F60000C0E0 /* AppStore */ = {
 			isa = PBXGroup;
 			children = (
+				938CC4E82759A4EC0000C0E0 /* Lib */,
+				938CC4E42759A40C0000C0E0 /* View */,
 				938CC4DE275978200000C0E0 /* Controller */,
 				938CC4AE275977F60000C0E0 /* AppDelegate.swift */,
 				938CC4B0275977F60000C0E0 /* SceneDelegate.swift */,
@@ -133,9 +149,46 @@
 		938CC4DE275978200000C0E0 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				938CC4E12759A1AB0000C0E0 /* SearchViewController */,
 				938CC4DF2759784B0000C0E0 /* BaseTabBarViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		938CC4E12759A1AB0000C0E0 /* SearchViewController */ = {
+			isa = PBXGroup;
+			children = (
+				938CC4E22759A1BD0000C0E0 /* SearchViewController.swift */,
+			);
+			path = SearchViewController;
+			sourceTree = "<group>";
+		};
+		938CC4E42759A40C0000C0E0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				938CC4E52759A4180000C0E0 /* Search */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		938CC4E52759A4180000C0E0 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				938CC4E62759A4300000C0E0 /* SearchCell.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		938CC4E82759A4EC0000C0E0 /* Lib */ = {
+			isa = PBXGroup;
+			children = (
+				938CC4E92759A4FD0000C0E0 /* UIView.swift */,
+				938CC4EB2759A5E00000C0E0 /* UIImageView.swift */,
+				938CC4EF2759AF680000C0E0 /* UIButton.swift */,
+				938CC4F12759B51B0000C0E0 /* UIColor.swift */,
+				938CC4ED2759A9A00000C0E0 /* UILabel.swift */,
+			);
+			path = Lib;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -269,7 +322,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				938CC4EC2759A5E00000C0E0 /* UIImageView.swift in Sources */,
+				938CC4EA2759A4FD0000C0E0 /* UIView.swift in Sources */,
+				938CC4E32759A1BD0000C0E0 /* SearchViewController.swift in Sources */,
+				938CC4E72759A4300000C0E0 /* SearchCell.swift in Sources */,
+				938CC4EE2759A9A00000C0E0 /* UILabel.swift in Sources */,
+				938CC4F02759AF680000C0E0 /* UIButton.swift in Sources */,
 				938CC4B3275977F60000C0E0 /* ViewController.swift in Sources */,
+				938CC4F22759B51B0000C0E0 /* UIColor.swift in Sources */,
 				938CC4AF275977F60000C0E0 /* AppDelegate.swift in Sources */,
 				938CC4B1275977F60000C0E0 /* SceneDelegate.swift in Sources */,
 				938CC4E02759784B0000C0E0 /* BaseTabBarViewController.swift in Sources */,

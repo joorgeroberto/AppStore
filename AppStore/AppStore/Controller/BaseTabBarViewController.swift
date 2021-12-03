@@ -16,16 +16,17 @@ class BaseTabBarViewController: UITabBarController  {
         super.viewDidLoad()
         self.tabBar.backgroundColor = UIColor(named: "TranslucentWhite")
         
-        createTabItem(title: "Today", icon: "icone-hoje")
-        createTabItem(title: "Apps", icon: "icone-apps")
-        createTabItem(title: "Search", icon: "icone-busca")
+        createTabItem(viewController: UIViewController(), title: "Today", icon: "icone-hoje")
+        createTabItem(viewController: UIViewController(), title: "Apps", icon: "icone-apps")
+        createTabItem(viewController: SearchViewController(), title: "Search", icon: "icone-busca")
         
         viewControllers = arrayViewControllers
         
+        selectedIndex = 2
+        
     }
     
-    func createTabItem(title: String, icon: String) {
-        let viewController = UIViewController()
+    func createTabItem(viewController: UIViewController, title: String, icon: String) {
         let navController = UINavigationController(rootViewController: viewController)
         navController.navigationBar.prefersLargeTitles = true
         
