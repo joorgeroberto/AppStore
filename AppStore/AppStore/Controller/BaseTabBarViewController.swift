@@ -1,0 +1,39 @@
+//
+//  BaseTabBarViewController.swift
+//  AppStore
+//
+//  Created by Jorge de Carvalho on 02/12/21.
+//
+
+import Foundation
+import UIKit
+
+class BaseTabBarViewController: UITabBarController  {
+    
+    var arrayViewControllers = [UIViewController]()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.tabBar.backgroundColor = UIColor(named: "TranslucentWhite")
+        
+        createTabItem(title: "Today", icon: "icone-hoje")
+        createTabItem(title: "Apps", icon: "icone-apps")
+        createTabItem(title: "Search", icon: "icone-busca")
+        
+        viewControllers = arrayViewControllers
+        
+    }
+    
+    func createTabItem(title: String, icon: String) {
+        let viewController = UIViewController()
+        let navController = UINavigationController(rootViewController: viewController)
+        navController.navigationBar.prefersLargeTitles = true
+        
+        let image = UIImage(named: icon)
+        viewController.navigationItem.title = title
+        viewController.tabBarItem = UITabBarItem(title: title, image: image, selectedImage: image)
+        viewController.view.backgroundColor = .white
+        
+        arrayViewControllers.append(navController)
+    }
+}
