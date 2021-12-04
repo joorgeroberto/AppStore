@@ -32,6 +32,7 @@ class BaseTabBarViewController: UITabBarController  {
         
         let image = UIImage(named: icon)
         viewController.navigationItem.title = title
+        viewController.navigationItem.hidesSearchBarWhenScrolling = false
         viewController.tabBarItem = UITabBarItem(title: title, image: image, selectedImage: image)
         viewController.view.backgroundColor = .white
         

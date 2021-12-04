@@ -1,0 +1,18 @@
+//
+//  App.swift
+//  AppStore
+//
+//  Created by Jorge de Carvalho on 04/12/21.
+//
+
+import Foundation
+
+struct App: Decodable {
+    let id: Int
+    let nome: String
+    let empresa: String
+    let avaliacao: String?
+    let iconeUrl: String
+    let screenshotUrls: [String]?
+
+}

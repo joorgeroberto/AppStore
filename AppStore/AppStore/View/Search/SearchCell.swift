@@ -7,12 +7,36 @@
 
 import Foundation
 import UIKit
+import SDWebImage
 
 class SearchCell: UITableViewCell {
+    var app: App! {
+        didSet {
+            titleLabel.text = app.nome
+            enterpriseLabel.text = app.empresa
+            
+            imageViewIcon.sd_setImage(with: URL(string: app.iconeUrl), completed: nil)
+            if let screenshotUrls = app.screenshotUrls {
+                for index in 0...2 {
+                    if screenshotUrls.count > index {
+                        self.screenshotsList[index].sd_setImage(with: URL(string: app.screenshotUrls![index]), completed: nil)
+                    }
+                }
+            }
+        }
+    }
+    
+    
     let imageViewIcon: UIImageView = .imageViewIcon()
     let titleLabel: UILabel = .textLabel(text: "App Name", fontSize: 18, numberOfLines: 2)
     let enterpriseLabel: UILabel = .textLabel(text: "Enterprise Name", fontSize: 14, numberOfLines: 2)
     let getButton: UIButton = .getButton()
+    
+    let screenshotsList: [UIImageView] = [
+        .screenshotImageView(),
+        .screenshotImageView(),
+        .screenshotImageView()
+    ]
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -31,9 +55,16 @@ class SearchCell: UITableViewCell {
         ])
         headerStackView.spacing = 12
         headerStackView.alignment = .center
-
-        addSubview(headerStackView)
-        headerStackView.fillSuperView(padding: .init(top: 0, left: 20, bottom: 0, right: 20))
+        
+        let screenshotStackView = UIStackView(arrangedSubviews: screenshotsList)
+        screenshotStackView.spacing = 10
+        screenshotStackView.distribution = .fillEqually
+        let globalStackView = UIStackView(arrangedSubviews: [headerStackView, screenshotStackView])
+        globalStackView.spacing = 16
+        globalStackView.axis = .vertical
+        
+        addSubview(globalStackView)
+        globalStackView.fillSuperView(padding: .init(top: 20, left: 20, bottom: 20, right: 20))
     }
     
     required init?(coder: NSCoder) {
