@@ -9,10 +9,33 @@ import Foundation
 import UIKit
 
 class SearchCell: UITableViewCell {
+    var app: App! {
+        didSet {
+            titleLabel.text = app.nome
+            enterpriseLabel.text = app.empresa
+            
+            DispatchQueue.main.async {
+                if let url = URL(string: self.app.iconeUrl ) {
+                    do {
+                        let data = try Data(contentsOf: url)
+                        self.imageViewIcon.image = UIImage(data: data)
+                    } catch let error{
+                        print(error )
+                    }
+                } else {return}
+            }
+        }
+    }
+    
+    
     let imageViewIcon: UIImageView = .imageViewIcon()
     let titleLabel: UILabel = .textLabel(text: "App Name", fontSize: 18, numberOfLines: 2)
     let enterpriseLabel: UILabel = .textLabel(text: "Enterprise Name", fontSize: 14, numberOfLines: 2)
     let getButton: UIButton = .getButton()
+    
+    let firstScreenshot: UIImageView = .screenshotImageView()
+    let secondScreenshot: UIImageView = .screenshotImageView()
+    let thirdScreenshot: UIImageView = .screenshotImageView()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -31,9 +54,20 @@ class SearchCell: UITableViewCell {
         ])
         headerStackView.spacing = 12
         headerStackView.alignment = .center
+        
+        let screenshotStackView = UIStackView(arrangedSubviews: [
+            firstScreenshot,
+            secondScreenshot,
+            thirdScreenshot
+        ])
+        screenshotStackView.spacing = 10
+        screenshotStackView.distribution = .fillEqually
+        let globalStackView = UIStackView(arrangedSubviews: [headerStackView, screenshotStackView])
+        globalStackView.spacing = 16
+        globalStackView.axis = .vertical
 
-        addSubview(headerStackView)
-        headerStackView.fillSuperView(padding: .init(top: 0, left: 20, bottom: 0, right: 20))
+        addSubview(globalStackView)
+        globalStackView.fillSuperView(padding: .init(top: 20, left: 20, bottom: 20, right: 20))
     }
     
     required init?(coder: NSCoder) {

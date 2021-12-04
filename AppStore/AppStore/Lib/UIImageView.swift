@@ -20,4 +20,17 @@ extension UIImageView {
         
         return imageView
     }
+    
+    static func screenshotImageView() -> UIImageView {
+        let imageView = UIImageView()
+         
+        imageView.backgroundColor = .purple
+        imageView.layer.cornerRadius = 12
+        imageView.layer.borderWidth = 0.5
+        imageView.layer.borderColor = UIColor(white: 0.5, alpha: 0.5).cgColor
+        imageView.clipsToBounds = true
+        imageView.contentMode = .scaleToFill
+        
+        return imageView
+    }
 }

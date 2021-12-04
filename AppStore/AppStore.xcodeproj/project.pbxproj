@@ -24,6 +24,8 @@
 		938CC4EE2759A9A00000C0E0 /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938CC4ED2759A9A00000C0E0 /* UILabel.swift */; };
 		938CC4F02759AF680000C0E0 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938CC4EF2759AF680000C0E0 /* UIButton.swift */; };
 		938CC4F22759B51B0000C0E0 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938CC4F12759B51B0000C0E0 /* UIColor.swift */; };
+		938CC4F5275AFE9C0000C0E0 /* SearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938CC4F4275AFE9C0000C0E0 /* SearchService.swift */; };
+		938CC4F8275B1CA30000C0E0 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938CC4F7275B1CA30000C0E0 /* App.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +67,8 @@
 		938CC4ED2759A9A00000C0E0 /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
 		938CC4EF2759AF680000C0E0 /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		938CC4F12759B51B0000C0E0 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		938CC4F4275AFE9C0000C0E0 /* SearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchService.swift; sourceTree = "<group>"; };
+		938CC4F7275B1CA30000C0E0 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +119,8 @@
 		938CC4AD275977F60000C0E0 /* AppStore */ = {
 			isa = PBXGroup;
 			children = (
+				938CC4F6275B1C940000C0E0 /* Model */,
+				938CC4F3275AFE870000C0E0 /* Service */,
 				938CC4E82759A4EC0000C0E0 /* Lib */,
 				938CC4E42759A40C0000C0E0 /* View */,
 				938CC4DE275978200000C0E0 /* Controller */,
@@ -189,6 +195,22 @@
 				938CC4ED2759A9A00000C0E0 /* UILabel.swift */,
 			);
 			path = Lib;
+			sourceTree = "<group>";
+		};
+		938CC4F3275AFE870000C0E0 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				938CC4F4275AFE9C0000C0E0 /* SearchService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		938CC4F6275B1C940000C0E0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				938CC4F7275B1CA30000C0E0 /* App.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -322,6 +344,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				938CC4F8275B1CA30000C0E0 /* App.swift in Sources */,
 				938CC4EC2759A5E00000C0E0 /* UIImageView.swift in Sources */,
 				938CC4EA2759A4FD0000C0E0 /* UIView.swift in Sources */,
 				938CC4E32759A1BD0000C0E0 /* SearchViewController.swift in Sources */,
@@ -331,6 +354,7 @@
 				938CC4B3275977F60000C0E0 /* ViewController.swift in Sources */,
 				938CC4F22759B51B0000C0E0 /* UIColor.swift in Sources */,
 				938CC4AF275977F60000C0E0 /* AppDelegate.swift in Sources */,
+				938CC4F5275AFE9C0000C0E0 /* SearchService.swift in Sources */,
 				938CC4B1275977F60000C0E0 /* SceneDelegate.swift in Sources */,
 				938CC4E02759784B0000C0E0 /* BaseTabBarViewController.swift in Sources */,
 			);

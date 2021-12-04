@@ -16,7 +16,7 @@ extension UIButton {
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
         button.size(size: .init(width: 80, height: 32))
         button.layer.cornerRadius = 16
-        button.layer.backgroundColor = CGColor(red: 0, green: 0, blue: 0, alpha: 0.04)
+        button.backgroundColor = UIColor(white: 0.95, alpha: 1)
         button.clipsToBounds = true
         
         return button
