@@ -70,12 +70,6 @@ extension SearchViewController {
         cell.app = self.apps[indexPath.item]
         return cell
     }
-    
-    // Set the spacing between sections
-    override  func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return CGFloat(50)
-    }
-    
 }
 
 

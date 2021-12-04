@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import SDWebImage
 
 class SearchCell: UITableViewCell {
     var app: App! {
@@ -14,15 +15,17 @@ class SearchCell: UITableViewCell {
             titleLabel.text = app.nome
             enterpriseLabel.text = app.empresa
             
-            DispatchQueue.main.async {
-                if let url = URL(string: self.app.iconeUrl ) {
-                    do {
-                        let data = try Data(contentsOf: url)
-                        self.imageViewIcon.image = UIImage(data: data)
-                    } catch let error{
-                        print(error )
-                    }
-                } else {return}
+            imageViewIcon.sd_setImage(with: URL(string: app.iconeUrl), completed: nil)
+            if let screenshotUrls = app.screenshotUrls {
+                if screenshotUrls.count > 0 {
+                    self.firstScreenshot.sd_setImage(with: URL(string: app.screenshotUrls![0]), completed: nil)
+                }
+                if screenshotUrls.count > 1 {
+                    self.secondScreenshot.sd_setImage(with: URL(string: app.screenshotUrls![1]), completed: nil)
+                }
+                if screenshotUrls.count > 2 {
+                    self.thirdScreenshot.sd_setImage(with: URL(string: app.screenshotUrls![2]), completed: nil)
+                }
             }
         }
     }
