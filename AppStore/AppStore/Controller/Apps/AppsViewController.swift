@@ -13,6 +13,13 @@ class AppsViewController: UICollectionViewController, UICollectionViewDelegateFl
     let headerID = "headerID"
     var featuredApps: [FeaturedApp] = []
     var appGroups: [AppGroup] = []
+    let activityInficatorView: UIActivityIndicatorView = {
+        let activityIndicator = UIActivityIndicatorView(style: .large)
+        activityIndicator.color = UIColor.greyColor
+        activityIndicator.startAnimating()
+        activityIndicator.hidesWhenStopped = true
+        return activityIndicator
+    }()
     
     init() {
         super.init(collectionViewLayout: UICollectionViewFlowLayout())
@@ -28,40 +35,69 @@ class AppsViewController: UICollectionViewController, UICollectionViewDelegateFl
         collectionView.backgroundColor = .white
         collectionView.register(AppsGroupCell.self , forCellWithReuseIdentifier: cellID)
         collectionView.register(AppsHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "headerID")
-        self.getFeaturedApps()
-        self.getAppGroup(type: "apps-que-amamos")
-        self.getAppGroup(type: "top-apps-gratis")
-        self.getAppGroup(type: "top-apps-pagos")
+        view.addSubview(activityInficatorView)
+        activityInficatorView.centerSuperView()
+        self.getApps()
+        //        self.getFeaturedApps()
+        //        self.getAppGroup(type: "apps-que-amamos")
+        //        self.getAppGroup(type: "top-apps-gratis")
+        //        self.getAppGroup(type: "top-apps-pagos")
     }
 }
 
 
 extension AppsViewController {
-    func getFeaturedApps() {
-        AppService.shared.getFeaturedApps() { (apps, error) in
-            if let apps = apps {
-                DispatchQueue.main.async {
-                    self.featuredApps = apps
-                    self.collectionView.reloadData()
-                }
+    func getApps() {
+        var featuredApps: [FeaturedApp]?
+        var appsThatWeLove: AppGroup?
+        var topFreeApps: AppGroup?
+        var topPaidApps: AppGroup?
+        
+        let dispatchGroup = DispatchGroup()
+        
+        dispatchGroup.enter()
+        AppService.shared.getFeaturedApps {(apps, error) in
+            featuredApps = apps
+            dispatchGroup.leave()
+        }
+        
+        dispatchGroup.enter()
+        AppService.shared.getAppGroup(type: "apps-que-amamos") {(appGroup, error) in
+            appsThatWeLove = appGroup
+            dispatchGroup.leave()
+        }
+        
+        dispatchGroup.enter()
+        AppService.shared.getAppGroup(type: "top-apps-gratis") {(appGroup, error) in
+            topFreeApps = appGroup
+            dispatchGroup.leave()
+        }
+        
+        dispatchGroup.enter()
+        AppService.shared.getAppGroup(type: "top-apps-pagos") {(appGroup, error) in
+            topPaidApps = appGroup
+            dispatchGroup.leave()
+        }
+        
+        dispatchGroup.notify( queue: .main) {
+            if let apps = featuredApps {
+                self.featuredApps = apps
             }
+            if let apps = appsThatWeLove {
+                self.appGroups.append(apps)
+            }
+            if let apps = topFreeApps {
+                self.appGroups.append(apps)
+            }
+            if let apps = topPaidApps {
+                self.appGroups.append(apps)
+            }
+            
+            self.activityInficatorView.stopAnimating()
+            self.collectionView.reloadData()
         }
     }
     
-    func getAppGroup(type: String) {
-        AppService.shared.getAppGroup(type: type) { (appGroup, error) in
-            if let error = error {
-                print(error)
-                return
-            }
-            if let appGroup = appGroup {
-                DispatchQueue.main.async {
-                    self.appGroups.append(appGroup)
-                    self.collectionView.reloadData()
-                }
-            }
-        }
-    }
 }
 
 extension AppsViewController {
@@ -92,7 +128,7 @@ extension AppsViewController {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return .init(width: view.bounds.width, height: CGFloat(250))
+        return .init(width: view.bounds.width, height: CGFloat(280))
     }
     
 }
