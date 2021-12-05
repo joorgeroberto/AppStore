@@ -38,10 +38,6 @@ class AppsViewController: UICollectionViewController, UICollectionViewDelegateFl
         view.addSubview(activityInficatorView)
         activityInficatorView.centerSuperView()
         self.getApps()
-        //        self.getFeaturedApps()
-        //        self.getAppGroup(type: "apps-que-amamos")
-        //        self.getAppGroup(type: "top-apps-gratis")
-        //        self.getAppGroup(type: "top-apps-pagos")
     }
 }
 
@@ -123,7 +119,10 @@ extension AppsViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as! AppsGroupCell
         cell.group = self.appGroups[indexPath.item]
-        
+        cell.appsHorizontalGroupViewController.callback = { (app) in
+            let appDetailsViewController = AppDetailsViewController()
+            self.navigationController?.pushViewController(appDetailsViewController, animated: true)
+        }
         return cell
     }
     
