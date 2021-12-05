@@ -29,6 +29,7 @@
 		938CC4F22759B51B0000C0E0 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938CC4F12759B51B0000C0E0 /* UIColor.swift */; };
 		938CC4F5275AFE9C0000C0E0 /* SearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938CC4F4275AFE9C0000C0E0 /* SearchService.swift */; };
 		938CC4F8275B1CA30000C0E0 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938CC4F7275B1CA30000C0E0 /* App.swift */; };
+		93ED5684275C34AD00BFC74C /* AppsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93ED5683275C34AD00BFC74C /* AppsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +77,7 @@
 		938CC4F12759B51B0000C0E0 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		938CC4F4275AFE9C0000C0E0 /* SearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchService.swift; sourceTree = "<group>"; };
 		938CC4F7275B1CA30000C0E0 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
+		93ED5683275C34AD00BFC74C /* AppsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsViewController.swift; sourceTree = "<group>"; };
 		9A5704CC6B61A7CC3FDA5180 /* Pods_AppStore_AppStoreUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AppStore_AppStoreUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A77894D38E25C52D72C97D8F /* Pods_AppStoreTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AppStoreTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4CDA37C6BF758B5D2045AE7 /* Pods-AppStore-AppStoreUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppStore-AppStoreUITests.release.xcconfig"; path = "Target Support Files/Pods-AppStore-AppStoreUITests/Pods-AppStore-AppStoreUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 		938CC4DE275978200000C0E0 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				93ED5682275C349900BFC74C /* AppsViewController */,
 				938CC4E12759A1AB0000C0E0 /* SearchViewController */,
 				938CC4DF2759784B0000C0E0 /* BaseTabBarViewController.swift */,
 			);
@@ -230,6 +233,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		93ED5682275C349900BFC74C /* AppsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				93ED5683275C34AD00BFC74C /* AppsViewController.swift */,
+			);
+			path = AppsViewController;
+			sourceTree = "<group>";
+		};
 		9884209D89E83B82D108416F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -250,7 +261,6 @@
 				4DDBAD5511090D60E74E43B8 /* Pods-AppStoreTests.debug.xcconfig */,
 				10A38D069D7E6F3FD304B1BD /* Pods-AppStoreTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -501,6 +511,7 @@
 				938CC4EE2759A9A00000C0E0 /* UILabel.swift in Sources */,
 				938CC4F02759AF680000C0E0 /* UIButton.swift in Sources */,
 				938CC4B3275977F60000C0E0 /* ViewController.swift in Sources */,
+				93ED5684275C34AD00BFC74C /* AppsViewController.swift in Sources */,
 				938CC4F22759B51B0000C0E0 /* UIColor.swift in Sources */,
 				938CC4AF275977F60000C0E0 /* AppDelegate.swift in Sources */,
 				938CC4F5275AFE9C0000C0E0 /* SearchService.swift in Sources */,
