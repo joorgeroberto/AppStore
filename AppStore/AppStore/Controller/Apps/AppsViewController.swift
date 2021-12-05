@@ -25,7 +25,7 @@ class AppsViewController: UICollectionViewController, UICollectionViewDelegateFl
         super.viewDidLoad()
         
         collectionView.backgroundColor = .white
-        collectionView.register(UICollectionViewCell.self , forCellWithReuseIdentifier: cellID)
+        collectionView.register(AppsGroupCell.self , forCellWithReuseIdentifier: cellID)
         collectionView.register(AppsHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "headerID")
         self.searchFeaturedApps()
     }
@@ -59,12 +59,11 @@ extension AppsViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return 1
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath)
-        cell.backgroundColor = .red
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as! AppsGroupCell
         
         return cell
     }
