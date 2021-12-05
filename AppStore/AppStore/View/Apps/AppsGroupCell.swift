@@ -14,8 +14,6 @@ class AppsGroupCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        backgroundColor = .blueColor
          
         addSubview(titleLabel)
         titleLabel.fill(
