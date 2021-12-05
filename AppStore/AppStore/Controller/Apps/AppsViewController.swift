@@ -11,6 +11,7 @@ import UIKit
 class AppsViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     let cellID = "cellID"
     let headerID = "headerID"
+    var featuredApps: [FeaturedApp] = []
     
     init() {
         super.init(collectionViewLayout: UICollectionViewFlowLayout())
@@ -26,13 +27,30 @@ class AppsViewController: UICollectionViewController, UICollectionViewDelegateFl
         collectionView.backgroundColor = .white
         collectionView.register(UICollectionViewCell.self , forCellWithReuseIdentifier: cellID)
         collectionView.register(AppsHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "headerID")
+        self.searchFeaturedApps()
+    }
+}
+
+
+extension AppsViewController {
+    func searchFeaturedApps() {
+        AppService.shared.searchFeaturedApps() { (apps, error) in
+            if let apps = apps {
+                DispatchQueue.main.async {
+                    print(apps)
+                    self.featuredApps = apps
+                    self.collectionView.reloadData()
+                }
+            }
+        }
     }
 }
 
 extension AppsViewController {
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerID, for: indexPath) as! AppsHeader
-        
+        header.featuredApps = self.featuredApps
+        header.collectionView.reloadData()
         return header
     }
     

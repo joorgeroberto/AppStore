@@ -11,6 +11,7 @@ import UIKit
 class AppsHeader: UICollectionReusableView, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     let cellID = "cellID"
     var collectionView: UICollectionView!
+    var featuredApps: [FeaturedApp] = []
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -35,12 +36,12 @@ class AppsHeader: UICollectionReusableView, UICollectionViewDelegate, UICollecti
 
 extension AppsHeader {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return self.featuredApps.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as! AppsHeaderCell
-        cell.backgroundColor = .yellow
+        cell.featuredApp = self.featuredApps[indexPath.item]
         return cell
     }
     
