@@ -7,8 +7,18 @@
 
 import Foundation
 import UIKit
+import SDWebImage
 
 class AppsHeaderCell: UICollectionViewCell {
+    var featuredApp: FeaturedApp! {
+        didSet {
+            enterpriseLabel.text = featuredApp.empresa
+            descriptionLabel.text = featuredApp.descricao
+            
+            imageView.sd_setImage(with: URL(string: featuredApp.imagemUrl), completed: nil)
+        }
+    }
+    
     let enterpriseLabel: UILabel = .textLabel(text: "Enterprise App", fontSize: 12)
     let descriptionLabel: UILabel = .textLabel(text: "App Description", fontSize: 20, numberOfLines: 2)
     let imageView: UIImageView = .screenshotImageView()

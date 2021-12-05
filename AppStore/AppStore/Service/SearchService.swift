@@ -14,14 +14,13 @@ class SearchService {
         guard let url = URL(string: "http://localhost/app-store/v1/apps?search=\(text )") else {return}
         
         
-        URLSession.shared.dataTask(with: url) { data, res, error in
+        URLSession.shared.dataTask(with: url) { (data, res, error) in
             if let error = error {
                 completion(nil, error)
                 return
             }
             
-            do {
-                
+            do {   
                 guard let data = data else {return}
                 let apps = try JSONDecoder().decode([App].self, from: data)
                 completion(apps, nil)

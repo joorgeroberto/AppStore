@@ -9,5 +9,5 @@ import UIKit
 
 extension UIColor {
     static let blueColor = UIColor(red: 0/255, green: 118/255, blue: 224/255, alpha: 1)
-    static let greyColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
+    static let greyColor = UIColor(red: 158/255, green: 158/255, blue: 158/255, alpha: 1)
 }
