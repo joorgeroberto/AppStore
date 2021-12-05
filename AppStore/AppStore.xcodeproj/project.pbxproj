@@ -30,6 +30,8 @@
 		938CC4F5275AFE9C0000C0E0 /* SearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938CC4F4275AFE9C0000C0E0 /* SearchService.swift */; };
 		938CC4F8275B1CA30000C0E0 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938CC4F7275B1CA30000C0E0 /* App.swift */; };
 		93ED5684275C34AD00BFC74C /* AppsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93ED5683275C34AD00BFC74C /* AppsViewController.swift */; };
+		93ED5686275C3EAF00BFC74C /* AppsHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93ED5685275C3EAF00BFC74C /* AppsHeader.swift */; };
+		93ED5689275C45F100BFC74C /* AppsHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93ED5688275C45F100BFC74C /* AppsHeaderCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +80,8 @@
 		938CC4F4275AFE9C0000C0E0 /* SearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchService.swift; sourceTree = "<group>"; };
 		938CC4F7275B1CA30000C0E0 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		93ED5683275C34AD00BFC74C /* AppsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsViewController.swift; sourceTree = "<group>"; };
+		93ED5685275C3EAF00BFC74C /* AppsHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsHeader.swift; sourceTree = "<group>"; };
+		93ED5688275C45F100BFC74C /* AppsHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsHeaderCell.swift; sourceTree = "<group>"; };
 		9A5704CC6B61A7CC3FDA5180 /* Pods_AppStore_AppStoreUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AppStore_AppStoreUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A77894D38E25C52D72C97D8F /* Pods_AppStoreTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AppStoreTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4CDA37C6BF758B5D2045AE7 /* Pods-AppStore-AppStoreUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppStore-AppStoreUITests.release.xcconfig"; path = "Target Support Files/Pods-AppStore-AppStoreUITests/Pods-AppStore-AppStoreUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -174,7 +178,7 @@
 		938CC4DE275978200000C0E0 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				93ED5682275C349900BFC74C /* AppsViewController */,
+				93ED5682275C349900BFC74C /* Apps */,
 				938CC4E12759A1AB0000C0E0 /* SearchViewController */,
 				938CC4DF2759784B0000C0E0 /* BaseTabBarViewController.swift */,
 			);
@@ -192,6 +196,7 @@
 		938CC4E42759A40C0000C0E0 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				93ED5687275C45E400BFC74C /* Apps */,
 				938CC4E52759A4180000C0E0 /* Search */,
 			);
 			path = View;
@@ -233,12 +238,21 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		93ED5682275C349900BFC74C /* AppsViewController */ = {
+		93ED5682275C349900BFC74C /* Apps */ = {
 			isa = PBXGroup;
 			children = (
 				93ED5683275C34AD00BFC74C /* AppsViewController.swift */,
+				93ED5685275C3EAF00BFC74C /* AppsHeader.swift */,
 			);
-			path = AppsViewController;
+			path = Apps;
+			sourceTree = "<group>";
+		};
+		93ED5687275C45E400BFC74C /* Apps */ = {
+			isa = PBXGroup;
+			children = (
+				93ED5688275C45F100BFC74C /* AppsHeaderCell.swift */,
+			);
+			path = Apps;
 			sourceTree = "<group>";
 		};
 		9884209D89E83B82D108416F /* Frameworks */ = {
@@ -515,6 +529,8 @@
 				938CC4F22759B51B0000C0E0 /* UIColor.swift in Sources */,
 				938CC4AF275977F60000C0E0 /* AppDelegate.swift in Sources */,
 				938CC4F5275AFE9C0000C0E0 /* SearchService.swift in Sources */,
+				93ED5689275C45F100BFC74C /* AppsHeaderCell.swift in Sources */,
+				93ED5686275C3EAF00BFC74C /* AppsHeader.swift in Sources */,
 				938CC4B1275977F60000C0E0 /* SceneDelegate.swift in Sources */,
 				938CC4E02759784B0000C0E0 /* BaseTabBarViewController.swift in Sources */,
 			);
