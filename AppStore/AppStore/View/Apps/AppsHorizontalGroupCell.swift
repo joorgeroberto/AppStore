@@ -7,8 +7,19 @@
 
 import Foundation
 import UIKit
+import SDWebImage
 
 class AppsHorizontalGroupCell: UICollectionViewCell {
+    var app: App? {
+        didSet {
+            if let app = app {
+                imageViewIcon.sd_setImage(with: URL(string: app.iconeUrl), completed: nil)
+                titleLabel.text = app.nome
+                enterpriseLabel.text = app.empresa
+            }
+        }
+    }
+    
     let imageViewIcon: UIImageView = .imageViewIcon()
     let titleLabel: UILabel = .textLabel(text: "Title label", fontSize: 18, numberOfLines: 2)
     let enterpriseLabel: UILabel = .textLabel(text: "Enterprise Name", fontSize: 14)

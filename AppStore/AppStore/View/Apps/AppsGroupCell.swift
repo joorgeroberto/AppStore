@@ -9,6 +9,14 @@ import Foundation
 import UIKit
 
 class AppsGroupCell: UICollectionViewCell {
+    var group: AppGroup? {
+        didSet {
+            if let group = group {
+                titleLabel.text = group.titulo
+                appsHorizontalGroupViewController.apps = group.apps
+            }
+        }
+    }
     let titleLabel: UILabel = .textBoldLabel(text: "App Title Label", fontSize: 24)
     let appsHorizontalGroupViewController = AppsHorizontalGroupViewController()
     

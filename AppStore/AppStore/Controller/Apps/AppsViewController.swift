@@ -12,6 +12,7 @@ class AppsViewController: UICollectionViewController, UICollectionViewDelegateFl
     let cellID = "cellID"
     let headerID = "headerID"
     var featuredApps: [FeaturedApp] = []
+    var appGroups: [AppGroup] = []
     
     init() {
         super.init(collectionViewLayout: UICollectionViewFlowLayout())
@@ -27,18 +28,35 @@ class AppsViewController: UICollectionViewController, UICollectionViewDelegateFl
         collectionView.backgroundColor = .white
         collectionView.register(AppsGroupCell.self , forCellWithReuseIdentifier: cellID)
         collectionView.register(AppsHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "headerID")
-        self.searchFeaturedApps()
+        self.getFeaturedApps()
+        self.getAppGroup(type: "apps-que-amamos")
+        self.getAppGroup(type: "top-apps-gratis")
+        self.getAppGroup(type: "top-apps-pagos")
     }
 }
 
 
 extension AppsViewController {
-    func searchFeaturedApps() {
-        AppService.shared.searchFeaturedApps() { (apps, error) in
+    func getFeaturedApps() {
+        AppService.shared.getFeaturedApps() { (apps, error) in
             if let apps = apps {
                 DispatchQueue.main.async {
-                    print(apps)
                     self.featuredApps = apps
+                    self.collectionView.reloadData()
+                }
+            }
+        }
+    }
+    
+    func getAppGroup(type: String) {
+        AppService.shared.getAppGroup(type: type) { (appGroup, error) in
+            if let error = error {
+                print(error)
+                return
+            }
+            if let appGroup = appGroup {
+                DispatchQueue.main.async {
+                    self.appGroups.append(appGroup)
                     self.collectionView.reloadData()
                 }
             }
@@ -63,11 +81,12 @@ extension AppsViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return self.appGroups.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as! AppsGroupCell
+        cell.group = self.appGroups[indexPath.item]
         
         return cell
     }

@@ -10,6 +10,8 @@ import UIKit
 
 class AppsHorizontalGroupViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     let cellID = "cellID"
+    var apps: [App] = []
+    
     init() {
         let layout = SnappingLayout()
         layout.scrollDirection = .horizontal
@@ -36,12 +38,12 @@ extension AppsHorizontalGroupViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 9
+        return self.apps.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as! AppsHorizontalGroupCell
-
+        cell.app = self.apps[indexPath.item]
         return cell
     }
     

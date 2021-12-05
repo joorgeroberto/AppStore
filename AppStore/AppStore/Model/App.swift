@@ -23,3 +23,9 @@ struct FeaturedApp: Decodable {
     let imagemUrl: String
     let descricao: String
 }
+
+struct AppGroup: Decodable {
+    let id: String
+    let titulo: String
+    let apps: [App]
+}
