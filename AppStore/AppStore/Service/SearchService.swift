@@ -13,6 +13,7 @@ class SearchService {
     func searchApps(text: String, completion: @escaping ([App]?, Error?) -> ()) {
         guard let url = URL(string: "http://localhost/app-store/v1/apps?search=\(text )") else {return}
         
+        
         URLSession.shared.dataTask(with: url) { data, res, error in
             if let error = error {
                 completion(nil, error)
