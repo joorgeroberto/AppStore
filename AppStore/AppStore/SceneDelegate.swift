@@ -21,6 +21,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: windowScene)
         window?.backgroundColor = .white
         window?.rootViewController = BaseTabBarViewController()
+        window?.overrideUserInterfaceStyle = .light
+
         window?.makeKeyAndVisible()
     }
 
