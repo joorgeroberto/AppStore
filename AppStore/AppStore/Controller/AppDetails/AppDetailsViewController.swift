@@ -11,6 +11,7 @@ import UIKit
 class AppDetailsViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout  {
     let headerID = "headerID"
     let descriptionID = "descriptionID"
+    let screenshotDetailsID = "screenshotDetailsID"
     
     init() {
         super.init(collectionViewLayout: UICollectionViewFlowLayout())
@@ -27,29 +28,33 @@ class AppDetailsViewController: UICollectionViewController, UICollectionViewDele
         collectionView.backgroundColor = .white
         collectionView.register(AppDetailsHeaderCell.self, forCellWithReuseIdentifier: headerID)
         collectionView.register(AppDetailsDescriptionCell.self, forCellWithReuseIdentifier: descriptionID)
+        collectionView.register(AppScreenshotDetailsCell.self, forCellWithReuseIdentifier: screenshotDetailsID)
+        
     }
 }
 
 extension AppDetailsViewController {
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 2
+        return 3
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: UICollectionViewCell
         let isHeaderCell = indexPath.item == 0
-        //let isDescriptionCell = indexPath.item == 0
+        let isDescriptionCell = indexPath.item == 1
         if(isHeaderCell) {
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: headerID, for: indexPath) as! AppDetailsHeaderCell
             
             return cell
         }
-        //if(isDescriptionCell) {
+        if(isDescriptionCell) {
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: descriptionID, for: indexPath) as! AppDetailsDescriptionCell
-            //cell.backgroundColor = .red
             
             return cell
-        //}
+        }
+        
+        cell = collectionView.dequeueReusableCell(withReuseIdentifier: screenshotDetailsID, for: indexPath) as! AppScreenshotDetailsCell
+        return cell
         
         
     }
@@ -66,6 +71,11 @@ extension AppDetailsViewController {
             // Adjusting cell height
             let estimatingCellSize = descriptionCell.systemLayoutSizeFitting(CGSize(width: width, height: 1000))
             height = estimatingCellSize.height
+        }
+        
+        let isScreenshotCell = indexPath.item == 2
+        if(isScreenshotCell) {
+            height = 550
         }
         
         return .init(width: width, height: height)
