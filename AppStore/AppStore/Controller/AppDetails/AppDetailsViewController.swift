@@ -12,6 +12,7 @@ class AppDetailsViewController: UICollectionViewController, UICollectionViewDele
     let headerID = "headerID"
     let descriptionID = "descriptionID"
     let screenshotDetailsID = "screenshotDetailsID"
+    let evaluationID = "evaluationID"
     
     init() {
         super.init(collectionViewLayout: UICollectionViewFlowLayout())
@@ -29,19 +30,21 @@ class AppDetailsViewController: UICollectionViewController, UICollectionViewDele
         collectionView.register(AppDetailsHeaderCell.self, forCellWithReuseIdentifier: headerID)
         collectionView.register(AppDetailsDescriptionCell.self, forCellWithReuseIdentifier: descriptionID)
         collectionView.register(AppScreenshotDetailsCell.self, forCellWithReuseIdentifier: screenshotDetailsID)
+        collectionView.register(AppEvaluationDetailsCell.self, forCellWithReuseIdentifier: evaluationID)
         
     }
 }
 
 extension AppDetailsViewController {
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return 4
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: UICollectionViewCell
         let isHeaderCell = indexPath.item == 0
         let isDescriptionCell = indexPath.item == 1
+        let isScreenshotDetailsCell = indexPath.item == 2
         if(isHeaderCell) {
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: headerID, for: indexPath) as! AppDetailsHeaderCell
             
@@ -52,8 +55,12 @@ extension AppDetailsViewController {
             
             return cell
         }
+        if(isScreenshotDetailsCell) {
+            cell = collectionView.dequeueReusableCell(withReuseIdentifier: screenshotDetailsID, for: indexPath) as! AppScreenshotDetailsCell
+            return cell
+        }
         
-        cell = collectionView.dequeueReusableCell(withReuseIdentifier: screenshotDetailsID, for: indexPath) as! AppScreenshotDetailsCell
+        cell = collectionView.dequeueReusableCell(withReuseIdentifier: evaluationID, for: indexPath) as! AppEvaluationDetailsCell
         return cell
         
         
@@ -76,6 +83,11 @@ extension AppDetailsViewController {
         let isScreenshotCell = indexPath.item == 2
         if(isScreenshotCell) {
             height = 550
+        }
+        
+        let isEvaluationCell = indexPath.item == 3
+        if(isEvaluationCell) {
+            height = 280
         }
         
         return .init(width: width, height: height)
