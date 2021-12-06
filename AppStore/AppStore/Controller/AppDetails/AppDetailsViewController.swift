@@ -10,6 +10,7 @@ import UIKit
 
 class AppDetailsViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout  {
     let headerID = "headerID"
+    let descriptionID = "descriptionID"
     
     init() {
         super.init(collectionViewLayout: UICollectionViewFlowLayout())
@@ -25,23 +26,47 @@ class AppDetailsViewController: UICollectionViewController, UICollectionViewDele
         
         collectionView.backgroundColor = .white
         collectionView.register(AppDetailsHeaderCell.self, forCellWithReuseIdentifier: headerID)
+        collectionView.register(AppDetailsDescriptionCell.self, forCellWithReuseIdentifier: descriptionID)
     }
 }
 
 extension AppDetailsViewController {
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return 2
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: headerID, for: indexPath) as! AppDetailsHeaderCell
+        let cell: UICollectionViewCell
+        let isHeaderCell = indexPath.item == 0
+        //let isDescriptionCell = indexPath.item == 0
+        if(isHeaderCell) {
+            cell = collectionView.dequeueReusableCell(withReuseIdentifier: headerID, for: indexPath) as! AppDetailsHeaderCell
+            
+            return cell
+        }
+        //if(isDescriptionCell) {
+            cell = collectionView.dequeueReusableCell(withReuseIdentifier: descriptionID, for: indexPath) as! AppDetailsDescriptionCell
+            //cell.backgroundColor = .red
+            
+            return cell
+        //}
         
-        return cell
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width: CGFloat = view.bounds.width
-        let height: CGFloat = 170
+        var height: CGFloat = 170
+        
+        let isDescriptionCell = indexPath.item == 1
+        if(isDescriptionCell) {
+            let descriptionCell = AppDetailsDescriptionCell(frame: CGRect(x: 0, y: 0, width: width, height: 1000))
+            descriptionCell.layoutIfNeeded()
+            
+            // Adjusting cell height
+            let estimatingCellSize = descriptionCell.systemLayoutSizeFitting(CGSize(width: width, height: 1000))
+            height = estimatingCellSize.height
+        }
         
         return .init(width: width, height: height)
     }
