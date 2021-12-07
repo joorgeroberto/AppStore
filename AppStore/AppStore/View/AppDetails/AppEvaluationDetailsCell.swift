@@ -9,6 +9,13 @@ import Foundation
 import UIKit
 
 class AppEvaluationDetailsCell: UICollectionViewCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    var app: App? {
+        didSet {
+            if app != nil {
+                self.collectionView.reloadData()
+            }
+        }
+    }
     let cellID = "cellID"
     
     let titleLabel: UILabel = .textBoldLabel(text: "Avaliações e opiniões", fontSize: 24)
@@ -56,11 +63,14 @@ class AppEvaluationDetailsCell: UICollectionViewCell, UICollectionViewDelegate, 
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as! AppCommentCell
+        if let comment = self.app?.comentarios?[indexPath.item] {
+            cell.comment = comment
+        }
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return self.app?.comentarios?.count ?? 0
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

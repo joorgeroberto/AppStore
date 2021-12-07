@@ -9,6 +9,16 @@ import Foundation
 import UIKit
 
 class AppCommentCell: UICollectionViewCell {
+    var comment: Comment? {
+        didSet {
+            if let comment = comment {
+                self.titleLabel.text = comment.titulo
+                self.commentLabel.text = comment.descricao
+                self.evaluationStarsImageView.image = UIImage(named: "avaliacao-\(comment.avaliacao)")
+            }
+        }
+    }
+    
     let titleLabel: UILabel = .textBoldLabel(text: "App muito bom", fontSize: 16)
     let commentLabel: UILabel = .textLabel(text: "App muito legal e funcional! Ajuda muito no meu dia a dia!", fontSize: 16, numberOfLines: 0)
     

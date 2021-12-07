@@ -9,7 +9,14 @@ import Foundation
 import UIKit
 
 class AppDetailsDescriptionCell: UICollectionViewCell {
-    let titleLabel: UILabel = .textBoldLabel(text: "App title description", fontSize: 24)
+    var app: App? {
+        didSet {
+            if let app = app {
+                self.descriptionLabel.text = app.descricao
+            }
+        }
+    }
+    let titleLabel: UILabel = .textBoldLabel(text: "Novidades", fontSize: 24)
     let descriptionLabel: UILabel = .textLabel(text: "App description", fontSize: 12, numberOfLines: 0)
     
     override init(frame: CGRect) {

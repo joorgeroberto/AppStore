@@ -121,6 +121,8 @@ extension AppsViewController {
         cell.group = self.appGroups[indexPath.item]
         cell.appsHorizontalGroupViewController.callback = { (app) in
             let appDetailsViewController = AppDetailsViewController()
+            appDetailsViewController.appID = app.id
+            appDetailsViewController.app = app
             self.navigationController?.pushViewController(appDetailsViewController, animated: true)
         }
         return cell

@@ -9,6 +9,13 @@ import Foundation
 import UIKit
 
 class AppScreenshotDetailsCell: UICollectionViewCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    var app: App? {
+        didSet {
+            if app != nil {
+                self.collectionView.reloadData()
+            }
+        }
+    }
     let cellID = "cellID"
     let titleLabel: UILabel = .textBoldLabel(text: "Preview", fontSize: 24)
     var collectionView: UICollectionView!
@@ -53,12 +60,14 @@ class AppScreenshotDetailsCell: UICollectionViewCell, UICollectionViewDelegate, 
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return app?.screenshotUrls?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as! ScreenshotsCell
-        
+        if let screenshotUrl = self.app?.screenshotUrls?[indexPath.item] {
+            cell.imageView.sd_setImage(with: URL(string: screenshotUrl), completed: nil)
+        }
         return cell
     }
     

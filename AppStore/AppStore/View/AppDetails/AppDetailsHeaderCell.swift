@@ -9,6 +9,15 @@ import Foundation
 import UIKit
 
 class AppDetailsHeaderCell: UICollectionViewCell {
+    var app: App? {
+        didSet {
+            if let app = app {
+                iconImageView.sd_setImage(with: URL(string: app.iconeUrl), completed: nil)
+                nameLabel.text = app.nome
+                enterpriseLabel.text = app.empresa
+            }
+        }
+    }
     let iconImageView: UIImageView = .imageViewIcon(width: 128, height: 128)
     let nameLabel: UILabel = .textLabel(text: "App Name", fontSize: 20, numberOfLines: 2)
     let enterpriseLabel: UILabel = .textLabel(text: "Enterprise Name", fontSize: 14)
