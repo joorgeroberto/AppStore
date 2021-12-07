@@ -12,6 +12,24 @@ class AppDetailsViewController: UICollectionViewController, UICollectionViewDele
     let headerID = "headerID"
     let descriptionID = "descriptionID"
     let screenshotDetailsID = "screenshotDetailsID"
+    let evaluationID = "evaluationID"
+    
+    var appID: Int! {
+        didSet {
+            self.getApp(appID: appID)
+        }
+    }
+    var app: App?
+    var loading: Bool = true
+    
+    let activityIndicatorView: UIActivityIndicatorView = {
+        let activityIndicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.large)
+        activityIndicator.color = .greyColor
+        activityIndicator.startAnimating()
+        activityIndicator.hidesWhenStopped = true
+        
+        return activityIndicator
+    }()
     
     init() {
         super.init(collectionViewLayout: UICollectionViewFlowLayout())
@@ -29,31 +47,53 @@ class AppDetailsViewController: UICollectionViewController, UICollectionViewDele
         collectionView.register(AppDetailsHeaderCell.self, forCellWithReuseIdentifier: headerID)
         collectionView.register(AppDetailsDescriptionCell.self, forCellWithReuseIdentifier: descriptionID)
         collectionView.register(AppScreenshotDetailsCell.self, forCellWithReuseIdentifier: screenshotDetailsID)
+        collectionView.register(AppEvaluationDetailsCell.self, forCellWithReuseIdentifier: evaluationID)
         
+        view.addSubview(activityIndicatorView)
+        activityIndicatorView.centerSuperView()
+        
+    }
+    
+    func getApp(appID: Int) {
+        AppService.shared.getAppByID(appID: appID) { (app, error) in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            //DispatchQueue.main.async {
+                self.activityIndicatorView.stopAnimating()
+                self.app = app
+                self.loading = false
+                self.collectionView.reloadData()
+            }
+        }
     }
 }
 
 extension AppDetailsViewController {
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return loading ? 1 : 4
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell: UICollectionViewCell
         let isHeaderCell = indexPath.item == 0
         let isDescriptionCell = indexPath.item == 1
+        let isScreenshotDetailsCell = indexPath.item == 2
         if(isHeaderCell) {
-            cell = collectionView.dequeueReusableCell(withReuseIdentifier: headerID, for: indexPath) as! AppDetailsHeaderCell
-            
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: headerID, for: indexPath) as! AppDetailsHeaderCell
+            cell.app = self.app
             return cell
         }
         if(isDescriptionCell) {
-            cell = collectionView.dequeueReusableCell(withReuseIdentifier: descriptionID, for: indexPath) as! AppDetailsDescriptionCell
-            
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: descriptionID, for: indexPath) as! AppDetailsDescriptionCell
+            cell.app = self.app
+            return cell
+        }
+        if(isScreenshotDetailsCell) {
+            let  cell = collectionView.dequeueReusableCell(withReuseIdentifier: screenshotDetailsID, for: indexPath) as! AppScreenshotDetailsCell
+            cell.app = self.app
             return cell
         }
         
-        cell = collectionView.dequeueReusableCell(withReuseIdentifier: screenshotDetailsID, for: indexPath) as! AppScreenshotDetailsCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: evaluationID, for: indexPath) as! AppEvaluationDetailsCell
+        cell.app = self.app
         return cell
         
         
@@ -66,6 +106,7 @@ extension AppDetailsViewController {
         let isDescriptionCell = indexPath.item == 1
         if(isDescriptionCell) {
             let descriptionCell = AppDetailsDescriptionCell(frame: CGRect(x: 0, y: 0, width: width, height: 1000))
+            descriptionCell.app = self.app
             descriptionCell.layoutIfNeeded()
             
             // Adjusting cell height
@@ -76,6 +117,11 @@ extension AppDetailsViewController {
         let isScreenshotCell = indexPath.item == 2
         if(isScreenshotCell) {
             height = 550
+        }
+        
+        let isEvaluationCell = indexPath.item == 3
+        if(isEvaluationCell) {
+            height = 280
         }
         
         return .init(width: width, height: height)

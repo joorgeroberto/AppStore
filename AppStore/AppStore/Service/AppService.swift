@@ -34,7 +34,7 @@ class AppService {
         }.resume()
     }
     
-    func getAppGroup(type: String, completion: @escaping (AppGroup?, Error?) -> ()) {
+    func getAppGroup(type: String, completion: @escaping (AppGroup?, Error?) -> Void) {
         guard let url = URL(string: "\(baseUrl)/apps/\(type)") else {return}
         
         
@@ -48,6 +48,28 @@ class AppService {
                 guard let data = data else {return}
                 let apps = try JSONDecoder().decode(AppGroup.self, from: data)
                 completion(apps, nil)
+            } catch let error {
+                completion(nil, error)
+                return
+            }
+            
+        }.resume()
+    }
+    
+    func getAppByID(appID: Int, completion: @escaping (App?, Error?) -> ()) {
+        guard let url = URL(string: "\(baseUrl)/apps/\(appID)") else {return}
+        
+        
+        URLSession.shared.dataTask(with: url) { (data, res, error) in
+            if let error = error {
+                completion(nil, error)
+                return
+            }
+            
+            do {
+                guard let data = data else {return}
+                let app = try JSONDecoder().decode(App.self, from: data)
+                completion(app, nil)
             } catch let error {
                 completion(nil, error)
                 return
