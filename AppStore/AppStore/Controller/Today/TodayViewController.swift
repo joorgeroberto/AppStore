@@ -55,7 +55,7 @@ extension TodayViewController {
                 modalView.modalPresentationStyle = .overCurrentContext
                 self.present(modalView, animated: false) {
                     modalView.frame = frame
-                    modalView.startAnimation()
+                    modalView.renderTodayAppDetails()
                 }
             }
         }
