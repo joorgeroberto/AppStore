@@ -12,6 +12,8 @@ class TodayDetailsViewController: UIViewController {
     var centerView: UIView?
     var frame: CGRect?
     
+    let closeButton: UIButton = .closeButton()
+    
     var topConstraint: NSLayoutConstraint?
     var leadingConstraint: NSLayoutConstraint?
     var widthConstraint: NSLayoutConstraint?
@@ -19,11 +21,30 @@ class TodayDetailsViewController: UIViewController {
     
     let todayAppDetailsViewController = TodayAppDetailsViewController()
     
+    var onClose: (() -> Void)?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = .clear
-//        self.renderTodayAppDetails()
+    }
+    
+    func renderCloseButton() {
+        view.addSubview(closeButton)
+        closeButton.alpha = 0
+        closeButton.addTarget(self, action: #selector(handleCloseButtonAction), for: .touchUpInside)
+        closeButton.fill(
+            top: self.view.safeAreaLayoutGuide.topAnchor,
+            leading: nil,
+            trailing: view.trailingAnchor,
+            bottom: nil,
+            padding: .init(top: 18, left: 0, bottom: 0, right: 24),
+            size: .init(width: 32, height: 32)
+        )
+        
+        UIView.animate(withDuration: 0.3, delay: 0.2, options: .showHideTransitionViews, animations: {
+            self.closeButton.alpha = 1
+        }, completion: nil)
     }
     
     func renderTodayAppDetails() {
@@ -40,6 +61,7 @@ class TodayDetailsViewController: UIViewController {
         centerView.clipsToBounds = true
         
         view.addSubview(centerView)
+        self.renderCloseButton()
         
         self.topConstraint = centerView.topAnchor.constraint(equalTo: view.topAnchor, constant: frame.origin.y)
         self.leadingConstraint = centerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: frame.origin.x)
@@ -62,5 +84,11 @@ class TodayDetailsViewController: UIViewController {
             self.centerView?.layer.cornerRadius = 0
             self.view.layoutIfNeeded()
         }, completion: nil)
+    }
+    
+    @objc func handleCloseButtonAction() {
+        self.onClose?()
+        
+        self.dismiss(animated: false, completion: nil)
     }
 }

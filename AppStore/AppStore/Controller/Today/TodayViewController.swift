@@ -53,6 +53,11 @@ extension TodayViewController {
                 tabBarController?.tabBar.isHidden = true
                 let modalView = TodayDetailsViewController()
                 modalView.modalPresentationStyle = .overCurrentContext
+                
+                modalView.onClose = {
+                    self.tabBarController?.tabBar.isHidden = false
+                }
+                
                 self.present(modalView, animated: false) {
                     modalView.frame = frame
                     modalView.renderTodayAppDetails()
