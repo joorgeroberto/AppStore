@@ -9,10 +9,16 @@ import Foundation
 import UIKit
 
 class TodayAppDetailsViewController: UITableViewController {
+    let cellID = "cellID"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .white
+        tableView.backgroundColor = .white
+        tableView.separatorStyle = .none
+        tableView.allowsSelection = false
+        tableView.register(TodayAppDetailsCell.self, forCellReuseIdentifier: cellID)
+        
         self.setupHeader()
     }
     
@@ -27,5 +33,17 @@ class TodayAppDetailsViewController: UITableViewController {
         todayCell.fillSuperView()
         
         self.tableView.tableHeaderView = headerView
+    }
+}
+
+extension TodayAppDetailsViewController {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as! TodayAppDetailsCell
+        
+        return cell
     }
 }

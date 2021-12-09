@@ -30,7 +30,7 @@ class AppsHorizontalGroupCell: UICollectionViewCell {
         
         let bottomLine = CALayer()
         bottomLine.frame = CGRect(x: 80, y: bounds.height, width: bounds.width - 80, height: 0.8)
-        bottomLine.backgroundColor = UIColor.greyColor.cgColor
+        bottomLine.backgroundColor = UIColor.grayColor.cgColor
         layer.addSublayer(bottomLine)
         
         let textStackView = UIStackView(arrangedSubviews: [titleLabel, enterpriseLabel])

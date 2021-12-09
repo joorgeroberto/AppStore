@@ -15,7 +15,7 @@ class AppsViewController: UICollectionViewController, UICollectionViewDelegateFl
     var appGroups: [AppGroup] = []
     let activityInficatorView: UIActivityIndicatorView = {
         let activityIndicator = UIActivityIndicatorView(style: .large)
-        activityIndicator.color = UIColor.greyColor
+        activityIndicator.color = UIColor.grayColor
         activityIndicator.startAnimating()
         activityIndicator.hidesWhenStopped = true
         return activityIndicator
