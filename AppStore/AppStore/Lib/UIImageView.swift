@@ -33,4 +33,15 @@ extension UIImageView {
         
         return imageView
     }
+    
+    static func todayImageView(named: String? = nil) -> UIImageView {
+        let imageView = UIImageView()
+         
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        if let named = named {
+            imageView.image = UIImage(named: named)
+        }
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }
 }

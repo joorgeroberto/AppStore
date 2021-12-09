@@ -16,13 +16,13 @@ class BaseTabBarViewController: UITabBarController  {
         super.viewDidLoad()
         self.tabBar.backgroundColor = UIColor(named: "TranslucentWhite")
         
-        createTabItem(viewController: UIViewController(), title: "Today", icon: "icone-hoje")
+        createTabItem(viewController: TodayViewController(), title: "Hoje", icon: "icone-hoje")
         createTabItem(viewController: AppsViewController(), title: "Apps", icon: "icone-apps")
-        createTabItem(viewController: SearchViewController(), title: "Search", icon: "icone-busca")
+        createTabItem(viewController: SearchViewController(), title: "Procurar", icon: "icone-busca")
         
         viewControllers = arrayViewControllers
         
-        selectedIndex = 1
+        selectedIndex = 0
         
     }
     

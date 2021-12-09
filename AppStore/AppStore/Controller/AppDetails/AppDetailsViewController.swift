@@ -24,7 +24,7 @@ class AppDetailsViewController: UICollectionViewController, UICollectionViewDele
     
     let activityIndicatorView: UIActivityIndicatorView = {
         let activityIndicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.large)
-        activityIndicator.color = .greyColor
+        activityIndicator.color = .grayColor
         activityIndicator.startAnimating()
         activityIndicator.hidesWhenStopped = true
         
