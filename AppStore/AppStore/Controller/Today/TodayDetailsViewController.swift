@@ -86,9 +86,25 @@ class TodayDetailsViewController: UIViewController {
         }, completion: nil)
     }
     
+    func closeAnimation() {
+        UIView.animate(withDuration: 0.3, delay: 0, options: .overrideInheritedCurve, animations: {
+            if let frame = self.frame {
+                self.topConstraint?.constant = frame.origin.y
+                self.leadingConstraint?.constant = frame.origin.x
+                self.widthConstraint?.constant = frame.width
+                self.heightConstraint?.constant = frame.height
+                
+                self.centerView?.layer.cornerRadius = 16
+                self.view.layoutIfNeeded()
+            }
+        }) { (_) in
+            self.dismiss(animated: false, completion: nil)
+        }
+    }
+    
     @objc func handleCloseButtonAction() {
+        self.closeButton.isHidden = true
         self.onClose?()
-        
-        self.dismiss(animated: false, completion: nil)
+        self.closeAnimation()
     }
 }
