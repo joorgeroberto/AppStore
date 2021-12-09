@@ -21,7 +21,6 @@ class TodayCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        print("foi")
         
         backgroundColor = .white
         layer.cornerRadius = 16

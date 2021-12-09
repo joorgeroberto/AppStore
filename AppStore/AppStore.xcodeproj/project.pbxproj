@@ -41,6 +41,8 @@
 		93AA0466276003C500DC2C30 /* TodayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AA0465276003C500DC2C30 /* TodayCell.swift */; };
 		93AA046827600A6000DC2C30 /* TodayDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AA046727600A6000DC2C30 /* TodayDetailsViewController.swift */; };
 		93C55B4F2761A22A00069471 /* TodayAppDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C55B4E2761A22A00069471 /* TodayAppDetailsCell.swift */; };
+		93C55B512761AC2900069471 /* TodayService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C55B502761AC2900069471 /* TodayService.swift */; };
+		93C55B532761ACA800069471 /* TodayApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C55B522761ACA800069471 /* TodayApp.swift */; };
 		93ED5684275C34AD00BFC74C /* AppsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93ED5683275C34AD00BFC74C /* AppsViewController.swift */; };
 		93ED5686275C3EAF00BFC74C /* AppsHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93ED5685275C3EAF00BFC74C /* AppsHeader.swift */; };
 		93ED5689275C45F100BFC74C /* AppsHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93ED5688275C45F100BFC74C /* AppsHeaderCell.swift */; };
@@ -108,6 +110,8 @@
 		93AA0465276003C500DC2C30 /* TodayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayCell.swift; sourceTree = "<group>"; };
 		93AA046727600A6000DC2C30 /* TodayDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayDetailsViewController.swift; sourceTree = "<group>"; };
 		93C55B4E2761A22A00069471 /* TodayAppDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayAppDetailsCell.swift; sourceTree = "<group>"; };
+		93C55B502761AC2900069471 /* TodayService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayService.swift; sourceTree = "<group>"; };
+		93C55B522761ACA800069471 /* TodayApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayApp.swift; sourceTree = "<group>"; };
 		93ED5683275C34AD00BFC74C /* AppsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsViewController.swift; sourceTree = "<group>"; };
 		93ED5685275C3EAF00BFC74C /* AppsHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsHeader.swift; sourceTree = "<group>"; };
 		93ED5688275C45F100BFC74C /* AppsHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsHeaderCell.swift; sourceTree = "<group>"; };
@@ -287,6 +291,7 @@
 			children = (
 				938CC4F4275AFE9C0000C0E0 /* SearchService.swift */,
 				93ED568C275C526600BFC74C /* AppService.swift */,
+				93C55B502761AC2900069471 /* TodayService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -295,6 +300,7 @@
 			isa = PBXGroup;
 			children = (
 				938CC4F7275B1CA30000C0E0 /* App.swift */,
+				93C55B522761ACA800069471 /* TodayApp.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -603,6 +609,7 @@
 				93AA0463275FFEB000DC2C30 /* TodayViewController.swift in Sources */,
 				93AA046827600A6000DC2C30 /* TodayDetailsViewController.swift in Sources */,
 				938CC4F8275B1CA30000C0E0 /* App.swift in Sources */,
+				93C55B512761AC2900069471 /* TodayService.swift in Sources */,
 				938CC4EC2759A5E00000C0E0 /* UIImageView.swift in Sources */,
 				938CC4EA2759A4FD0000C0E0 /* UIView.swift in Sources */,
 				938CC4E32759A1BD0000C0E0 /* SearchViewController.swift in Sources */,
@@ -630,6 +637,7 @@
 				93ED5693275C6D3200BFC74C /* AppsHorizontalGroupViewController.swift in Sources */,
 				93ED5686275C3EAF00BFC74C /* AppsHeader.swift in Sources */,
 				938CC4B1275977F60000C0E0 /* SceneDelegate.swift in Sources */,
+				93C55B532761ACA800069471 /* TodayApp.swift in Sources */,
 				938CC4E02759784B0000C0E0 /* BaseTabBarViewController.swift in Sources */,
 				93ED568D275C526600BFC74C /* AppService.swift in Sources */,
 				9319AE0A275D61D7009A7E38 /* AppDetailsViewController.swift in Sources */,

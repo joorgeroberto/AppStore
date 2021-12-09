@@ -10,6 +10,7 @@ import UIKit
 
 class TodayViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     let cellID = "cellID"
+    var todayApps: [TodayApp] = []
     init() {
         super.init(collectionViewLayout: UICollectionViewFlowLayout())
     }
@@ -25,12 +26,25 @@ class TodayViewController: UICollectionViewController, UICollectionViewDelegateF
         
         collectionView.backgroundColor = .commentBackgroundColor
         collectionView.register(TodayCell.self, forCellWithReuseIdentifier: cellID)
+        
+        self.getFeaturedTodayApps()
+    }
+    
+    func getFeaturedTodayApps() {
+        TodayService.shared.getFeaturedTodayApps { (todayApps, error) in
+            if let todayApps = todayApps {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    self.todayApps = todayApps
+                    self.collectionView.reloadData()
+                }
+            }
+        }
     }
 }
 
 extension TodayViewController {
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return self.todayApps.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
