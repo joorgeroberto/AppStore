@@ -9,6 +9,14 @@ import Foundation
 import UIKit
 
 class TodayDetailsViewController: UIViewController {
+    var todayApp: TodayApp? {
+        didSet {
+            if todayApp != nil {
+                self.renderTodayAppDetails()
+            }
+        }
+    }
+    
     var centerView: UIView?
     var frame: CGRect?
     
@@ -48,6 +56,7 @@ class TodayDetailsViewController: UIViewController {
     }
     
     func renderTodayAppDetails() {
+        todayAppDetailsViewController.todayApp = self.todayApp
         self.centerView = todayAppDetailsViewController.view
         self.startAnimation()
     }

@@ -11,12 +11,15 @@ import UIKit
 class TodayAppDetailsViewController: UITableViewController {
     let cellID = "cellID"
     
+    var todayApp: TodayApp?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.backgroundColor = .white
         tableView.separatorStyle = .none
         tableView.allowsSelection = false
+        tableView.contentInsetAdjustmentBehavior = .never
         tableView.register(TodayAppDetailsCell.self, forCellReuseIdentifier: cellID)
         
         self.setupHeader()
@@ -27,6 +30,7 @@ class TodayAppDetailsViewController: UITableViewController {
         headerView.backgroundColor = .red
         
         let todayCell = TodayCell()
+        todayCell.todayApp = self.todayApp
         todayCell.layer.cornerRadius = 0
 
         headerView.addSubview(todayCell)

@@ -49,6 +49,7 @@ extension TodayViewController {
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as! TodayCell
+        cell.todayApp = self.todayApps[indexPath.item]
         
         return cell
     }
@@ -74,7 +75,8 @@ extension TodayViewController {
                 
                 self.present(modalView, animated: false) {
                     modalView.frame = frame
-                    modalView.renderTodayAppDetails()
+                    modalView.todayApp = self.todayApps[indexPath.item]
+//                    modalView.renderTodayAppDetails()
                 }
             }
         }
