@@ -10,6 +10,7 @@ import UIKit
 
 class TodayViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     let cellID = "cellID"
+    let multipleID = "multipleID"
     var todayApps: [TodayApp] = []
     init() {
         super.init(collectionViewLayout: UICollectionViewFlowLayout())
@@ -26,6 +27,7 @@ class TodayViewController: UICollectionViewController, UICollectionViewDelegateF
         
         collectionView.backgroundColor = .commentBackgroundColor
         collectionView.register(TodayCell.self, forCellWithReuseIdentifier: cellID)
+        collectionView.register(TodayMultipleCell.self, forCellWithReuseIdentifier: multipleID)
         
         self.getFeaturedTodayApps()
     }
@@ -48,10 +50,17 @@ extension TodayViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as! TodayCell
-        cell.todayApp = self.todayApps[indexPath.item]
+        if indexPath.item < 2 {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as! TodayCell
+            cell.todayApp = self.todayApps[indexPath.item]
         
-        return cell
+            return cell
+        } else {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: multipleID, for: indexPath) as! TodayMultipleCell
+            cell.todayApp = self.todayApps[indexPath.item]
+            
+            return cell
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
