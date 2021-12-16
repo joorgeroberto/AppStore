@@ -20,7 +20,8 @@ class TodayService {
                 titulo: "Explore o mundo \n sem medo",
                 imagemUrl: "destaque-1",
                 descricao: "Dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ",
-                backgroundColor: "#FFFFFF"
+                backgroundColor: "#FFFFFF",
+                apps: nil
             ),
             TodayApp(
                 id: 2,
@@ -28,7 +29,17 @@ class TodayService {
                 titulo: "Mantenha o corpo \ne a mente saudáveis",
                 imagemUrl: "destaque-2",
                 descricao: "Dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ",
-                backgroundColor: "#69CCE0"
+                backgroundColor: "#69CCE0",
+                apps: nil
+            ),
+            TodayApp(
+                id: 3,
+                categoria: "A LISTA DO DIA",
+                titulo: "Pedale melhor com \nApple Watch",
+                imagemUrl: nil,
+                descricao: nil,
+                backgroundColor: nil,
+                apps: []
             )
         ]
         

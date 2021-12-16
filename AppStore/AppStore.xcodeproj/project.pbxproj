@@ -37,6 +37,8 @@
 		938CC4F22759B51B0000C0E0 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938CC4F12759B51B0000C0E0 /* UIColor.swift */; };
 		938CC4F5275AFE9C0000C0E0 /* SearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938CC4F4275AFE9C0000C0E0 /* SearchService.swift */; };
 		938CC4F8275B1CA30000C0E0 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938CC4F7275B1CA30000C0E0 /* App.swift */; };
+		93993D7D276ABA5200E1084D /* TodayMultipleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93993D7C276ABA5200E1084D /* TodayMultipleCell.swift */; };
+		93993D7F276ACBA700E1084D /* TodayMultipleAppCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93993D7E276ACBA700E1084D /* TodayMultipleAppCell.swift */; };
 		93AA0463275FFEB000DC2C30 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AA0462275FFEB000DC2C30 /* TodayViewController.swift */; };
 		93AA0466276003C500DC2C30 /* TodayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AA0465276003C500DC2C30 /* TodayCell.swift */; };
 		93AA046827600A6000DC2C30 /* TodayDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AA046727600A6000DC2C30 /* TodayDetailsViewController.swift */; };
@@ -106,6 +108,8 @@
 		938CC4F12759B51B0000C0E0 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		938CC4F4275AFE9C0000C0E0 /* SearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchService.swift; sourceTree = "<group>"; };
 		938CC4F7275B1CA30000C0E0 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
+		93993D7C276ABA5200E1084D /* TodayMultipleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayMultipleCell.swift; sourceTree = "<group>"; };
+		93993D7E276ACBA700E1084D /* TodayMultipleAppCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayMultipleAppCell.swift; sourceTree = "<group>"; };
 		93AA0462275FFEB000DC2C30 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		93AA0465276003C500DC2C30 /* TodayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayCell.swift; sourceTree = "<group>"; };
 		93AA046727600A6000DC2C30 /* TodayDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayDetailsViewController.swift; sourceTree = "<group>"; };
@@ -320,6 +324,8 @@
 			children = (
 				93AA0465276003C500DC2C30 /* TodayCell.swift */,
 				93C55B4E2761A22A00069471 /* TodayAppDetailsCell.swift */,
+				93993D7C276ABA5200E1084D /* TodayMultipleCell.swift */,
+				93993D7E276ACBA700E1084D /* TodayMultipleAppCell.swift */,
 			);
 			path = Today;
 			sourceTree = "<group>";
@@ -621,6 +627,7 @@
 				938CC4EE2759A9A00000C0E0 /* UILabel.swift in Sources */,
 				93AA0466276003C500DC2C30 /* TodayCell.swift in Sources */,
 				934E005C27602BF90054A1F8 /* TodayAppDetailsViewController.swift in Sources */,
+				93993D7D276ABA5200E1084D /* TodayMultipleCell.swift in Sources */,
 				938CC4F02759AF680000C0E0 /* UIButton.swift in Sources */,
 				933FFE7C275EA15F001AE132 /* AppEvaluationDetailsCell.swift in Sources */,
 				938CC4B3275977F60000C0E0 /* ViewController.swift in Sources */,
@@ -641,6 +648,7 @@
 				938CC4E02759784B0000C0E0 /* BaseTabBarViewController.swift in Sources */,
 				93ED568D275C526600BFC74C /* AppService.swift in Sources */,
 				9319AE0A275D61D7009A7E38 /* AppDetailsViewController.swift in Sources */,
+				93993D7F276ACBA700E1084D /* TodayMultipleAppCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
