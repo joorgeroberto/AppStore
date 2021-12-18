@@ -77,4 +77,26 @@ class AppService {
             
         }.resume()
     }
+    
+    func getApps(completion: @escaping ([App]?, Error?) -> ()) {
+        guard let url = URL(string: "\(baseUrl)/apps") else {return}
+        
+        
+        URLSession.shared.dataTask(with: url) { (data, res, error) in
+            if let error = error {
+                completion(nil, error)
+                return
+            }
+            
+            do {
+                guard let data = data else {return}
+                let apps = try JSONDecoder().decode([App].self, from: data)                
+                completion(apps, nil)
+            } catch let error {
+                completion(nil, error)
+                return
+            }
+            
+        }.resume()
+    }
 }

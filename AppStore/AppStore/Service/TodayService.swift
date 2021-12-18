@@ -13,7 +13,7 @@ class TodayService {
     let baseUrl = "http://localhost/app-store/v1"
     
     func getFeaturedTodayApps(completion: @escaping ([TodayApp]?, Error?) -> Void) {
-        let todayApps: Array<TodayApp> = [
+        var todayApps: Array<TodayApp> = [
             TodayApp(
                 id: 1,
                 categoria: "VIAGEM",
@@ -31,18 +31,25 @@ class TodayService {
                 descricao: "Dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ",
                 backgroundColor: "#69CCE0",
                 apps: nil
-            ),
-            TodayApp(
-                id: 3,
-                categoria: "A LISTA DO DIA",
-                titulo: "Pedale melhor com \nApple Watch",
-                imagemUrl: nil,
-                descricao: nil,
-                backgroundColor: nil,
-                apps: []
             )
         ]
         
-        completion(todayApps, nil)
+        AppService.shared.getApps { (apps, error) in
+            if let apps = apps {
+                todayApps.append(
+                    TodayApp(
+                        id: 3,
+                        categoria: "A LISTA DO DIA",
+                        titulo: "Pedale melhor com \nApple Watch",
+                        imagemUrl: nil,
+                        descricao: nil,
+                        backgroundColor: nil,
+                        apps: apps
+                    )
+                )
+            }
+            
+            completion(todayApps, nil)
+        }
     }
 }

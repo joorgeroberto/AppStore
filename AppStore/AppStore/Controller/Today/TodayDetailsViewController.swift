@@ -11,8 +11,13 @@ import UIKit
 class TodayDetailsViewController: UIViewController {
     var todayApp: TodayApp? {
         didSet {
-            if todayApp != nil {
-                self.renderTodayAppDetails()
+            if let todayApp = todayApp {
+                if todayApp.apps == nil {
+                    self.renderSimpleTodayAppDetails()
+                }
+                else {
+                    self.renderMultipleTodayAppDetails()
+                }
             }
         }
     }
@@ -28,6 +33,7 @@ class TodayDetailsViewController: UIViewController {
     var heightConstraint: NSLayoutConstraint?
     
     let todayAppDetailsViewController = TodayAppDetailsViewController()
+    let todayMultipleDetailViewController = TodayMultipleDetailViewController()
     
     var onClose: (() -> Void)?
     
@@ -55,9 +61,14 @@ class TodayDetailsViewController: UIViewController {
         }, completion: nil)
     }
     
-    func renderTodayAppDetails() {
+    func renderSimpleTodayAppDetails() {
         todayAppDetailsViewController.todayApp = self.todayApp
         self.centerView = todayAppDetailsViewController.view
+        self.startAnimation()
+    }
+    
+    func renderMultipleTodayAppDetails() {
+        self.centerView = todayMultipleDetailViewController.view
         self.startAnimation()
     }
     

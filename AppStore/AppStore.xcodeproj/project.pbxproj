@@ -10,6 +10,7 @@
 		101D15B5812B323C1C131A0D /* Pods_AppStoreTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A77894D38E25C52D72C97D8F /* Pods_AppStoreTests.framework */; };
 		1FE74907C9B5B54C1625B656 /* Pods_AppStore_AppStoreUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A5704CC6B61A7CC3FDA5180 /* Pods_AppStore_AppStoreUITests.framework */; };
 		46455F1766E8CB3F420414E4 /* Pods_AppStore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA4CBB86B26E5B22D658E288 /* Pods_AppStore.framework */; };
+		9313E941276E68B000BA758D /* TodayMultipleDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9313E940276E68B000BA758D /* TodayMultipleDetailViewController.swift */; };
 		9319AE0A275D61D7009A7E38 /* AppDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9319AE09275D61D7009A7E38 /* AppDetailsViewController.swift */; };
 		9319AE0D275D694B009A7E38 /* AppDetailsHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9319AE0C275D694B009A7E38 /* AppDetailsHeaderCell.swift */; };
 		9319AE0F275D7990009A7E38 /* AppDetailsDescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9319AE0E275D7990009A7E38 /* AppDetailsDescriptionCell.swift */; };
@@ -77,6 +78,7 @@
 		10A38D069D7E6F3FD304B1BD /* Pods-AppStoreTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppStoreTests.release.xcconfig"; path = "Target Support Files/Pods-AppStoreTests/Pods-AppStoreTests.release.xcconfig"; sourceTree = "<group>"; };
 		4DDBAD5511090D60E74E43B8 /* Pods-AppStoreTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppStoreTests.debug.xcconfig"; path = "Target Support Files/Pods-AppStoreTests/Pods-AppStoreTests.debug.xcconfig"; sourceTree = "<group>"; };
 		51B2691C4CF4F6826867C745 /* Pods-AppStore-AppStoreUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppStore-AppStoreUITests.debug.xcconfig"; path = "Target Support Files/Pods-AppStore-AppStoreUITests/Pods-AppStore-AppStoreUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		9313E940276E68B000BA758D /* TodayMultipleDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayMultipleDetailViewController.swift; sourceTree = "<group>"; };
 		9319AE09275D61D7009A7E38 /* AppDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDetailsViewController.swift; sourceTree = "<group>"; };
 		9319AE0C275D694B009A7E38 /* AppDetailsHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDetailsHeaderCell.swift; sourceTree = "<group>"; };
 		9319AE0E275D7990009A7E38 /* AppDetailsDescriptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDetailsDescriptionCell.swift; sourceTree = "<group>"; };
@@ -315,6 +317,7 @@
 				93AA0462275FFEB000DC2C30 /* TodayViewController.swift */,
 				93AA046727600A6000DC2C30 /* TodayDetailsViewController.swift */,
 				934E005B27602BF90054A1F8 /* TodayAppDetailsViewController.swift */,
+				9313E940276E68B000BA758D /* TodayMultipleDetailViewController.swift */,
 			);
 			path = Today;
 			sourceTree = "<group>";
@@ -639,6 +642,7 @@
 				93ED5691275C6A7A00BFC74C /* AppsGroupCell.swift in Sources */,
 				93ED5689275C45F100BFC74C /* AppsHeaderCell.swift in Sources */,
 				93ED568F275C68D500BFC74C /* SnappingLayout.swift in Sources */,
+				9313E941276E68B000BA758D /* TodayMultipleDetailViewController.swift in Sources */,
 				9319AE0D275D694B009A7E38 /* AppDetailsHeaderCell.swift in Sources */,
 				93C55B4F2761A22A00069471 /* TodayAppDetailsCell.swift in Sources */,
 				93ED5693275C6D3200BFC74C /* AppsHorizontalGroupViewController.swift in Sources */,

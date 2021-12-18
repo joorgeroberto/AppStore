@@ -32,6 +32,8 @@ class TodayMultipleAppCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
+        selectionStyle = .none
+        
         let verticalStackView = UIStackView(arrangedSubviews: [titleLabel, enterpriseLabel])
         verticalStackView.axis = .vertical
         verticalStackView.spacing = 4
