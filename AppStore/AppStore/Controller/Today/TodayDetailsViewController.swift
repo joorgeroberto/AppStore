@@ -9,6 +9,19 @@ import Foundation
 import UIKit
 
 class TodayDetailsViewController: UIViewController {
+    var todayApp: TodayApp? {
+        didSet {
+            if let todayApp = todayApp {
+                if todayApp.apps == nil {
+                    self.renderSimpleTodayAppDetails()
+                }
+                else {
+                    self.renderMultipleTodayAppDetails()
+                }
+            }
+        }
+    }
+    
     var centerView: UIView?
     var frame: CGRect?
     
@@ -20,6 +33,7 @@ class TodayDetailsViewController: UIViewController {
     var heightConstraint: NSLayoutConstraint?
     
     let todayAppDetailsViewController = TodayAppDetailsViewController()
+    let todayMultipleDetailViewController = TodayMultipleDetailViewController()
     
     var onClose: (() -> Void)?
     
@@ -27,6 +41,14 @@ class TodayDetailsViewController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = .clear
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.isHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        navigationController?.navigationBar.isHidden = false
     }
     
     func renderCloseButton() {
@@ -47,8 +69,23 @@ class TodayDetailsViewController: UIViewController {
         }, completion: nil)
     }
     
-    func renderTodayAppDetails() {
+    func renderSimpleTodayAppDetails() {
+        todayAppDetailsViewController.todayApp = self.todayApp
         self.centerView = todayAppDetailsViewController.view
+        self.startAnimation()
+    }
+    
+    func renderMultipleTodayAppDetails() {
+        todayMultipleDetailViewController.todayApp = self.todayApp
+        todayMultipleDetailViewController.handleClick = { app in
+            let detailViewController = AppDetailsViewController()
+            detailViewController.title = app.nome
+            detailViewController.appID = app.id
+            detailViewController.app = app
+            
+            self.navigationController?.pushViewController(detailViewController, animated: true)
+        }
+        self.centerView = todayMultipleDetailViewController.view
         self.startAnimation()
     }
     
@@ -75,7 +112,7 @@ class TodayDetailsViewController: UIViewController {
         
         view.layoutIfNeeded()
         
-        UIView.animate(withDuration: 0.3, delay: 0, options: .overrideInheritedCurve, animations: {
+        UIView.animate(withDuration: 0.6, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: .overrideInheritedCurve, animations: {
             self.topConstraint?.constant = 0
             self.leadingConstraint?.constant = 0
             self.widthConstraint?.constant = self.view.frame.width
@@ -87,7 +124,10 @@ class TodayDetailsViewController: UIViewController {
     }
     
     func closeAnimation() {
-        UIView.animate(withDuration: 0.3, delay: 0, options: .overrideInheritedCurve, animations: {
+        self.todayMultipleDetailViewController.tableView.setContentOffset(CGPoint(x: 0, y: -self.todayMultipleDetailViewController.tableView.safeAreaInsets.top), animated: false)
+        self.todayMultipleDetailViewController.tableView.layoutIfNeeded()
+        
+        UIView.animate(withDuration: 0.6, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: .overrideInheritedCurve, animations: {
             if let frame = self.frame {
                 self.topConstraint?.constant = frame.origin.y
                 self.leadingConstraint?.constant = frame.origin.x
@@ -95,6 +135,8 @@ class TodayDetailsViewController: UIViewController {
                 self.heightConstraint?.constant = frame.height
                 
                 self.centerView?.layer.cornerRadius = 16
+                self.todayAppDetailsViewController.tableView.contentOffset = .zero
+                
                 self.view.layoutIfNeeded()
             }
         }) { (_) in

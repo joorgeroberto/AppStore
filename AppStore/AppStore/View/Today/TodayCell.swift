@@ -7,8 +7,27 @@
 
 import Foundation
 import UIKit
+import SDWebImage
 
 class TodayCell: UICollectionViewCell {
+    var todayApp: TodayApp? {
+        didSet {
+            if let todayApp = todayApp {
+                categoryLabel.text = todayApp.categoria
+                titleLabel.text = todayApp.titulo
+                descriptionLabel.text = todayApp.descricao
+                
+                if let image = todayApp.imagemUrl {
+                    imageView.image = UIImage(named: image)
+                }
+                
+                if let background = todayApp.backgroundColor {
+                    self.backgroundColor = UIColor(hexString: background)
+                }
+            }
+        }
+    }
+    
     let categoryLabel: UILabel = .textLabel(text: "Travel", fontSize: 18)
     let titleLabel: UILabel = .textBoldLabel(text: "Explore all the world. \n Find travel destination", fontSize: 28, numberOfLines: 2)
     let descriptionLabel: UILabel = .textLabel(text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.", fontSize: 14, numberOfLines: 3)
@@ -38,7 +57,13 @@ class TodayCell: UICollectionViewCell {
         stackView.spacing = 8
         
         addSubview(stackView)
-        stackView.fillSuperView(padding: .init(top: 24, left: 24, bottom: 24, right: 24))
+        stackView.fill(
+            top: self.safeAreaLayoutGuide.topAnchor,
+            leading: leadingAnchor,
+            trailing: trailingAnchor,
+            bottom: bottomAnchor,
+            padding: .init(top: 24, left: 24, bottom: 24, right: 24)
+        )
     }
     
 }
