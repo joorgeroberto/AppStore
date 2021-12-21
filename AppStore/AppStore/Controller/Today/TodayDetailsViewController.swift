@@ -112,7 +112,7 @@ class TodayDetailsViewController: UIViewController {
         
         view.layoutIfNeeded()
         
-        UIView.animate(withDuration: 0.3, delay: 0, options: .overrideInheritedCurve, animations: {
+        UIView.animate(withDuration: 0.6, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: .overrideInheritedCurve, animations: {
             self.topConstraint?.constant = 0
             self.leadingConstraint?.constant = 0
             self.widthConstraint?.constant = self.view.frame.width
@@ -124,7 +124,10 @@ class TodayDetailsViewController: UIViewController {
     }
     
     func closeAnimation() {
-        UIView.animate(withDuration: 0.3, delay: 0, options: .overrideInheritedCurve, animations: {
+        self.todayMultipleDetailViewController.tableView.setContentOffset(CGPoint(x: 0, y: -self.todayMultipleDetailViewController.tableView.safeAreaInsets.top), animated: false)
+        self.todayMultipleDetailViewController.tableView.layoutIfNeeded()
+        
+        UIView.animate(withDuration: 0.6, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: .overrideInheritedCurve, animations: {
             if let frame = self.frame {
                 self.topConstraint?.constant = frame.origin.y
                 self.leadingConstraint?.constant = frame.origin.x
@@ -132,6 +135,8 @@ class TodayDetailsViewController: UIViewController {
                 self.heightConstraint?.constant = frame.height
                 
                 self.centerView?.layer.cornerRadius = 16
+                self.todayAppDetailsViewController.tableView.contentOffset = .zero
+                
                 self.view.layoutIfNeeded()
             }
         }) { (_) in
