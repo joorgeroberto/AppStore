@@ -43,6 +43,14 @@ class TodayDetailsViewController: UIViewController {
         view.backgroundColor = .clear
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.isHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        navigationController?.navigationBar.isHidden = false
+    }
+    
     func renderCloseButton() {
         view.addSubview(closeButton)
         closeButton.alpha = 0
@@ -69,6 +77,14 @@ class TodayDetailsViewController: UIViewController {
     
     func renderMultipleTodayAppDetails() {
         todayMultipleDetailViewController.todayApp = self.todayApp
+        todayMultipleDetailViewController.handleClick = { app in
+            let detailViewController = AppDetailsViewController()
+            detailViewController.title = app.nome
+            detailViewController.appID = app.id
+            detailViewController.app = app
+            
+            self.navigationController?.pushViewController(detailViewController, animated: true)
+        }
         self.centerView = todayMultipleDetailViewController.view
         self.startAnimation()
     }

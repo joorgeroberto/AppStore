@@ -10,7 +10,20 @@ import UIKit
 
 class TodayMultipleDetailViewController: UITableViewController {
     let cellID = "cellID"
-    var todayApp: TodayApp?
+    
+    var handleClick: ((App) -> Void)?
+    
+    var todayApp: TodayApp? {
+        didSet {
+            if let todayApp = todayApp {
+                let header = TodayMultipleHeader(frame: .init(x: 0, y: 0, width: view.bounds.width, height: 145))
+                header.todayApp = todayApp
+                tableView.tableHeaderView = header
+                tableView.reloadData()
+            }
+        }
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,5 +43,11 @@ class TodayMultipleDetailViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.todayApp?.apps?.count ?? 0
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let app = self.todayApp?.apps?[indexPath.item] {
+            self.handleClick?(app)
+        }
     }
 }

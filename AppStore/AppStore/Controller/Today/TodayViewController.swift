@@ -82,10 +82,13 @@ extension TodayViewController {
                     self.tabBarController?.tabBar.isHidden = false
                 }
                 
-                self.present(modalView, animated: false) {
+                let modalNavigation = UINavigationController(rootViewController: modalView)
+                modalNavigation.modalPresentationStyle = .overCurrentContext
+                modalNavigation.view.backgroundColor = .clear
+                
+                self.present(modalNavigation, animated: false) {
                     modalView.frame = frame
                     modalView.todayApp = self.todayApps[indexPath.item]
-//                    modalView.renderTodayAppDetails()
                 }
             }
         }
