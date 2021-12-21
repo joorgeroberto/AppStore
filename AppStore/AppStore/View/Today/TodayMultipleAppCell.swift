@@ -25,6 +25,9 @@ class TodayMultipleAppCell: UITableViewCell {
     let enterpriseLabel: UILabel = .textLabel(text: "App Enterprise", fontSize: 14)
     let getButton: UIButton = .getButton()
     
+    var leadingContraint: NSLayoutConstraint?
+    var trailingContraint: NSLayoutConstraint?
+    
     required init?(coder: NSCoder) {
         fatalError()
     }
@@ -44,7 +47,18 @@ class TodayMultipleAppCell: UITableViewCell {
         horizontalStackView.alignment = .center
         
         addSubview(horizontalStackView)
-        horizontalStackView.fillSuperView(padding: .init(top: 14, left: 0, bottom: 14, right: 0))
+        //horizontalStackView.fillSuperView(padding: .init(top: 14, left: 0, bottom: 14, right: 0))
+        horizontalStackView.fill(
+            top: topAnchor,
+            leading: nil,
+            trailing: nil,
+            bottom: bottomAnchor,
+            padding: .init(top: 14, left: 0, bottom: 14, right: 0)
+        )
+        self.leadingContraint = horizontalStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0)
+        self.trailingContraint = horizontalStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0)
+        self.leadingContraint?.isActive = true
+        self.trailingContraint?.isActive = true
     }
     
     

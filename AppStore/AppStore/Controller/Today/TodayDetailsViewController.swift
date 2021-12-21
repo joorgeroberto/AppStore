@@ -68,6 +68,7 @@ class TodayDetailsViewController: UIViewController {
     }
     
     func renderMultipleTodayAppDetails() {
+        todayMultipleDetailViewController.todayApp = self.todayApp
         self.centerView = todayMultipleDetailViewController.view
         self.startAnimation()
     }
